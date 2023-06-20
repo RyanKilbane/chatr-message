@@ -37,4 +37,3 @@ impl ClientServer for CommandMessage {
         serde_json::to_string(&self).unwrap()
     }
 }
-

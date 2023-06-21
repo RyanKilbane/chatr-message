@@ -6,7 +6,7 @@ use crate::message::MessageContainer;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct NormalMessage{
-    message: MessageContainer,
+    pub message: MessageContainer,
     time_sent: DateTime<Utc>
 }
 
@@ -19,11 +19,15 @@ impl ClientServer for NormalMessage{
     fn to_string(self) -> String{
         serde_json::to_string(&self).unwrap()
     }
+
+    fn message_type(&self) -> &crate::message::MessageTypes {
+        &self.message.message_type
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct CommandMessage{
-    message: MessageContainer,
+    pub message: MessageContainer,
     time_sent: DateTime<Utc>
 }
 
@@ -35,5 +39,9 @@ impl ClientServer for CommandMessage {
 
     fn to_string(self) -> String{
         serde_json::to_string(&self).unwrap()
+    }
+
+    fn message_type(&self) -> &crate::message::MessageTypes {
+        &self.message.message_type
     }
 }

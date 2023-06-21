@@ -7,7 +7,7 @@ use crate::message::MessageContainer;
 #[derive(Debug, Deserialize, Serialize)]
 pub struct NormalMessage{
     pub message: MessageContainer,
-    time_sent: DateTime<Utc>
+    pub time_sent: DateTime<Utc>
 }
 
 impl ClientServer for NormalMessage{
